@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator made by Ben M</title>
+
+    <style>
+
+        html {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #outputview {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: auto;
+            margin-top: 25px;
+            width: 430px;
+            background: none;
+            padding: 25px 0;
+            text-align: center;
+            color: #333;
+            border: 2px solid #345
+        }
+
+        .calculator {
+            width: 450px;
+            margin: auto;
+            margin-top: 10px;
+
+        }
+
+        a {
+            background: #345;
+            border: 1px solid #345;
+            margin: 8px 8px;
+            padding: 25px 0;
+            text-align: center;
+            color: white;
+            -webkit-transition: all 100ms ease-in-out;
+            -moz-transition: all 100ms ease-in-out;
+            -ms-transition: all 100ms ease-in-out;
+            -o-transition: all 100ms ease-in-out;
+            transition: all 100ms ease-in-out;
+        }
+
+        a:hover {
+            background: #333;
+            border: 1px solid white;
+            font-weight: bold;
+        }
+
+        a:active {
+            border: 1px solid white;
+        }
+
+        .firstraw {
+            display: grid;
+            grid-template-columns: 225px 112px 112px;
+        }
+
+        .raw {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    </style>
+
+    <script>
+
+        let outputview = "";
+
+        function insert(num) {
+            outputview = outputview + num;
+            document.getElementById("outputview").innerHTML = outputview;
+        }
+
+        function equal() {
+            if(outputview) { 
+                outputview = eval(outputview);
+                document.getElementById("outputview").innerHTML = outputview;
+            }
+        }
+
+        function clean() {
+            var none = "";
+            outputview = "";
+            document.getElementById("outputview").innerHTML = outputview;
+            console.log("click");
+        }
+
+        function back() {
+            outputview = outputview.substring(0, outputview.length -1);
+            document.getElementById("outputview").innerHTML = outputview;
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="outputview"></div>
+    
+    <section class="calculator">
+        <div class="firstraw">
+            <a onclick="equal();">=</a>
+            <a onclick="clean();">C</a>
+            <a onclick="back();"><<</a>
+        </div>
+
+        <div class="raw">
+            <a onclick="insert('7')">7</a>
+            <a onclick="insert('8')">8</a>
+            <a onclick="insert('9')">9</a>
+            <a onclick="insert('+')">+</a>
+        </div>
+
+        <div class="raw">
+            <a onclick="insert('4')">4</a>
+            <a onclick="insert('5')">5</a>
+            <a onclick="insert('6')">6</a>
+            <a onclick="insert('-')">-</a>
+        </div>
+
+        <div class="raw">
+            <a onclick="insert('1')">1</a>
+            <a onclick="insert('2')">2</a>
+            <a onclick="insert('3')">3</a>
+            <a onclick="insert('.')">.</a>
+        </div>
+
+
+        <div class="raw">
+            <a onclick="insert('0')">0</a>
+            <a onclick="insert('*')">*</a>
+            <a onclick="insert('/')">/</a>
+            <a onclick="insert('%')">%</a>
+        </div>
+    </section>
+
+</body>
+</html>
